@@ -1,0 +1,21 @@
+{
+    "name": "mrodss/itworks",
+    "description": "Mini Framework PHP",
+    "type": "project",
+    "require": {
+        "twig/twig": "3.x-dev"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Mrodss\\Itworks\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "matheus mr",
+            "email": "mmussattorodrigues@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}

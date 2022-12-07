@@ -56,58 +56,81 @@ class RouterCore
             echo '</pre>';
         }
     }
-
+    // FUNÇÃO normalizeURI COM COM O PARÂMETRO "$arr"
     private function normalizeURI($arr)
     {
+        // RETORNANDO UM "array_values" COM UM "array_filter($arr)"
         return array_values(array_filter($arr));
     }
-
+    // FUNÇÃO excute()
     private function execute()
     {
+        // CASO A VARIÁVEL "$this" ACESSAR "method"
         switch ($this->method) {
+                // CASO "GET"
             case 'GET':
+                // VARIÁVEL $this ACESSA A FUNÇÃO executeGet()
                 $this->executeGet();
+                // PAUSA
                 break;
+                // CASO "POST"
             case 'POST':
+                // VARIÁVEL $this ACESSA A FUNÇÃO executePost()
                 $this->executePost();
+                // PAUSA
                 break;
         }
     }
-
+    // FUNÇÃO executeGet()
     private function executeGet()
     {
+        //PARA CADA VARIÁVEL "$this" ACESSA "getArr" as "$get"
         foreach ($this->getArr as $get) {
+            // DECLARA "$r" AONDE RECEBE A PARTE DA STRING COM OS PARÂMETROS ($get['router'], 1)
             $r = substr($get['router'], 1);
-
+            // SE A PARTE DA STRING $r OU -1 VAI SER IGUAL '/'
             if (substr($r, -1) == '/') {
+                // "$r" RECEBE A PARTE DA STRING DE ($r,0,-1)
                 $r = substr($r, 0, -1);
             }
+            // SE "$r" FOR IGUAL A VARIÁVEL "$this" ACESSANDO "uri"
             if ($r == $this->uri) {
+                // SE A VARIÀVEL FOR FUNÇÃO $get['call'] 
                 if (is_callable($get['call'])) {
+                    // RETORNA $get['call']()
                     $get['call']();
+                    // PAUSA
                     break;
+                    // SE NÃO
                 } else {
+                    // VARIÁVEL $this ACESSA A FUNÇÃO executeController($get['call']);
                     $this->executeController($get['call']);
                 }
             }
         }
     }
-
+    // FUNÇÃO executePost()
     private function executePost()
     {
+        //PARA CADA VARIÁVEL "$this" ACESSA "getArr" as "$get"
         foreach ($this->getArr as $get) {
+            // DECLARA "$r" AONDE RECEBE A PARTE DA STRING COM OS PARÂMETROS ($get['router'], 1)
             $r = substr($get['router'], 1);
-
+            // SE A PARTE DA STRING $r OU -1 VAI SER IGUAL '/'
             if (substr($r, -1) == '/') {
+                // "$r" RECEBE A PARTE DA STRING DE ($r,0,-1)
                 $r = substr($r, 0, -1);
             }
-
+            // SE "$r" FOR IGUAL A VARIÁVEL "$this" ACESSANDO "uri"
             if ($r == $this->uri) {
+                // SE A VARIÀVEL FOR FUNÇÃO $get['call'] 
                 if (is_callable($get['call'])) {
+                    // RETORNA $get['call']()
                     $get['call']();
+                    // RETORNA
                     return;
                 }
-
+                // VARIÁVEL $this ACESSA A FUNÇÃO executeController($get['call']);
                 $this->executeController($get['call']);
             }
         }

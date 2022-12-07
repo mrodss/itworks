@@ -1,41 +1,58 @@
 <?php
-
+// CHAMANDO O NAMESPACE
 namespace Itworks\core;
-
+// ABERTURA DA CLASSE ROUTERCORE
 class RouterCore
 {
+    // DECLARANDO AS VARIÁVEIS
     private $uri;
     private $method;
     private $getArr = [];
-
-    public function __construct(){
+    // FUNÇÃO __construct()
+    public function __construct()
+    {
+        // VARIAVEL "$this" ACESSANDO A FUNÇÃO "initial()"
         $this->initial();
+        // INCLUINDO O CAMINHO INTEIRO ATÉ O ARQUIVO "router.php"
         require_once('../app/config/router.php');
+        // VARIAVEL "$this" ACESSANDO A FUNÇÃO "execute()"
         $this->execute();
-
-    }  
-
-    private function initial(){
+    }
+    // FUNÇÃO initial()
+    private function initial()
+    {
+        // VÁRIAVEL "$this" ACESSADO METHOD, RECEBENDO A VÁRIAVEL "$_SERVER['REQUEST_METHOD']"
         $this->method = $_SERVER['REQUEST_METHOD'];
-        
+        // VARIAVEL "$uri_initial" RECEBENDO "$_SERVER['REQUEST_METHOD']"
         $uri_initial = $_SERVER['REQUEST_URI'];
-        
-        if (strpos($uri_initial, '?'))
-            $uri_initial = mb_substr($uri_initial, 0, strpos($uri_initial, '?'));
-        
-            $ex = explode('/', $uri_initial);
 
+        // SE A PRIMEIRA OCORRÊNCIA TIVER A VÁRIAVEL "uri_initial" ou '?'
+        if (strpos($uri_initial, '?'))
+            // VÁRIAVEL "$uri_initial" RECEBE A FUNÇÃO "mb_substr" COM OS PARÂMETROS
+            $uri_initial = mb_substr($uri_initial, 0, strpos($uri_initial, '?'));
+        // VÁRIAVEL "$ex" RECEBE a FUNÇÃO "explode" QUE ESTÁ ENCONTRANDO SÍMBOLOS
+        $ex = explode('/', $uri_initial);
+
+        // VÁRIAVEL "uri" RECEBE "array_values" TENDO COMO PARÂMETRO O "array_filter" DA VÁRIAVEL "$ex"
         $uri = array_values(array_filter($ex));
-        
+
+        // CRIANDO UM LAÇO DE REPETIÇÃO
+        // PARA $i = 0; $i SENDO MENOR QUE "UNSET_URI_COUNT"; $i ACRESCENTA +1
         for ($i = 0; $i < UNSET_URI_COUNT; $i++) {
+            // DESTRÓI A VÁRIAVEL "$uri[$i]"
             unset($uri[$i]);
         }
-        
+
+        // VÁRIAVEL "$this" ACESSA "$uri" RECEBENDO UM IMPLODE (RETORNA UMA STRING CONTENDO OS ELEMENTOS DA MATRIZ NA MESMA ORDEM)
         $this->uri = implode('/', $this->normalizeURI($uri));
 
-        if (DEBUG_URI){
+        // SE "DEBUG_URI"
+        if (DEBUG_URI) {
+            // PRINTANDO '<pre>'
             echo '<pre>';
-                print_r($this->uri);
+            // PRINTANTDO A VÁRIAVEL "$this" ACESSANDO "uri"
+            print_r($this->uri);
+            // PRINTANDO '<pre>'         
             echo '</pre>';
         }
     }
@@ -137,5 +154,4 @@ class RouterCore
             'call' => $call
         ];
     }
-
 }

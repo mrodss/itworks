@@ -135,44 +135,60 @@ class RouterCore
             }
         }
     }
-
+    // FUNÇÃO executeControlleR TENDO COMO PARÂMETRO A VÁRIAVEL GET($get)
     private function executeController($get)
     {
+        // VÁRIAVEL $ex RECEBE O RETORNO DE VÁRIAS STRINGS DA VÁRIAVEL GET SEPARADO POR @
         $ex = explode('@', $get);
+        // SE A VÁRIAVEL $ex NA POSIÇÃO 0 NÃO FOR INICIADA OU VÁRIAVEL $ex NA POSIÇÃO 1 NÃO FOR INICIADA
         // if (!isset($ex[0]) || !isset($ex[1])) {
+        // RETORNA UMA MENSAGEM DE ERRO CONCATENANDO COM A VÁRIAVEL GET
         //     (new \app\src\controller\MessageController)->message('Dados inválidos', 'Controller ou método não encontrado: ' . $get, 404);
         //     return;
         // }
 
+        // VARIAVEL $cont RECEBE O CAMINHO CONCATENADO COM A VÁRIAVEL $get
         $cont = 'Itworks\\src\\controller\\' . $ex[0];
+        // SE A CLASSE NÃO FOR DEFINIDA PELA VÁRIAVEL $cont
         // if (!class_exists($cont)) {
+        // RETORNA UMA MENSAGEM DE ERRO CONCATENANDO COM A VÁRIAVEL GET
         //     (new \app\src\controller\MessageController)->message('Dados inválidos', 'Controller não encontrada: ' . $get, 404);
         //     return;
         // }
 
-
+        // SE O MÉTODO DA CLASSE NÃO EXITIR PARA $cont e $ex[1]
         // if (!method_exists($cont, $ex[1])) {
+        // RETORNA UMA MENSAGEM DE ERRO CONCATENANDO COM A VÁRIAVEL GET
         //     (new \app\src\controller\MessageController)->message('Dados inválidos', 'Método não encontrado: ' . $get, 404);
         //     return;
         // }
 
+        // CHAMA A FUNÇÃO call_user_func_array([
         call_user_func_array([
+            // DECLARANDO UMA NOVA VÁRIAVEL $cont
             new $cont,
+            // CONTA OS USUÁRIOS A PARTIR DA POSIÇÃO $ex[1] 
             $ex[1]
+            // COLOCANDO-AS NO ARRAY
         ], []);
     }
 
+    // FUNÇÃO GET TENDO COMO PARÂMETROS A VÁRIAVEL $router e $call
     private function get($router, $call)
     {
+        // VARIÁVEL $this ACESSA O ARRAY $getarr[]
         $this->getArr[] = [
+            // ATRIBUI VALORES AS VÁRIAVEIS ABAIXO CITADAS
             'router' => $router,
             'call' => $call
         ];
     }
-
+    // FUNÇÃO POST TENDO COMO PARÂMETROS A VÁRIAVEL $router e $call
     private function post($router, $call)
     {
+        // VARIÁVEL $this ACESSA O ARRAY $getarr[]
         $this->getArr[] = [
+            // ATRIBUI VALORES AS VÁRIAVEIS ABAIXO CITADAS
             'router' => $router,
             'call' => $call
         ];

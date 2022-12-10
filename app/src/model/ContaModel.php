@@ -73,4 +73,21 @@ class ContaModel
             'dataRegistro' => $param['dataRegistro']   ?? null
         ];
     }
+
+    /**
+     * RETORNA UM ÚNICO REGISTRO DA BASE DE DADOS ATRÁVES DO ID INFORMADO
+     * @param int $id ID do objeto a ser retornado
+     * @return object Retorno de um objeto populado com os dados do registro ou se não encontrar com seus valores nulos
+     */
+    public function getById( int $id){
+        $sql = 'SELECT * FROM* extrato WHERE id = :id';
+
+        $param = [
+            ':id' =>$id
+        ];
+
+        $dr = $this->pdo->ExecuteQueryOneRow($sql, $param);
+
+        return $this->collection($dr);
+    }
 }

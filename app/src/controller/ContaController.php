@@ -13,6 +13,17 @@ class ContaController
         $this->contaModel = new ContaModel();
     }
 
+    /**
+     * CARREGA A PÁGINA PRINCIPAL
+     * @return void
+     */
+
+    public function index(){
+        $listaExtrato = $this->contaModel->getAll();
+
+        require('..\app\src\view\conta\main.php');
+    }
+
     public function extrato(){
         
                

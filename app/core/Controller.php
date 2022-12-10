@@ -22,7 +22,7 @@ class Controller
 
     }
 
-    public function showMassage(
+    public function showMessage(
         string $titulo,
         string $descricao,
         string $link = null,

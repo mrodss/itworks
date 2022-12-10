@@ -141,27 +141,27 @@ class RouterCore
         // VÁRIAVEL $ex RECEBE O RETORNO DE VÁRIAS STRINGS DA VÁRIAVEL GET SEPARADO POR @
         $ex = explode('@', $get);
         // SE A VÁRIAVEL $ex NA POSIÇÃO 0 NÃO FOR INICIADA OU VÁRIAVEL $ex NA POSIÇÃO 1 NÃO FOR INICIADA
-        // if (!isset($ex[0]) || !isset($ex[1])) {
+        if (!isset($ex[0]) || !isset($ex[1])) {
         // RETORNA UMA MENSAGEM DE ERRO CONCATENANDO COM A VÁRIAVEL GET
-        //     (new \app\src\controller\MessageController)->message('Dados inválidos', 'Controller ou método não encontrado: ' . $get, 404);
-        //     return;
-        // }
+            (new \Itworks\core\Controller)->showMessage('Dados inválidos', 'Controller ou método não encontrado: ' . $get, null, 404);
+            return;
+        }
 
         // VARIAVEL $cont RECEBE O CAMINHO CONCATENADO COM A VÁRIAVEL $get
         $cont = 'Itworks\\src\\controller\\' . $ex[0];
         // SE A CLASSE NÃO FOR DEFINIDA PELA VÁRIAVEL $cont
-        // if (!class_exists($cont)) {
+        if (!class_exists($cont)) {
         // RETORNA UMA MENSAGEM DE ERRO CONCATENANDO COM A VÁRIAVEL GET
-        //     (new \app\src\controller\MessageController)->message('Dados inválidos', 'Controller não encontrada: ' . $get, 404);
-        //     return;
-        // }
+        (new \Itworks\core\Controller)->showMessage('Dados inválidos', 'Controller não encontrada: ' . $get, null, 404);
+            return;
+        }
 
         // SE O MÉTODO DA CLASSE NÃO EXITIR PARA $cont e $ex[1]
-        // if (!method_exists($cont, $ex[1])) {
+        if (!method_exists($cont, $ex[1])) {
         // RETORNA UMA MENSAGEM DE ERRO CONCATENANDO COM A VÁRIAVEL GET
-        //     (new \app\src\controller\MessageController)->message('Dados inválidos', 'Método não encontrado: ' . $get, 404);
-        //     return;
-        // }
+        (new \Itworks\core\Controller)->showMessage('Dados inválidos', 'Método não encontrado: ' . $get, null, 404);
+            return;
+        }
 
         // CHAMA A FUNÇÃO call_user_func_array([
         call_user_func_array([

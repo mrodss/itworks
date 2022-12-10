@@ -30,7 +30,7 @@ class ContaModel
         $sqlParams = [
             ':valor' => $params->valor,
             ':movimentacao' => $params->movimentacao,
-            ':dataRegistro' => $params->dataRegistro
+            ':dataRegistro' => date('Y-m-d H:i:s')
         ];
 
         $handle = $this->pdo->executeNonQuery($sql, $sqlParams);

@@ -1,7 +1,8 @@
 <?php
-
-#http://localhost:8081/
-#http://localhost:8081/home
 // $this->get('/', 'HomeController@home');
 // $this->get('/home', 'HomeController@home');
-$this->get('/', 'ContaController@index');
+$this->get('/index', 'ContaController@index');
+
+$this->get('/', 'ContaController@novo');
+$this->post('/conta-salvar', 'ContaController@salvar');
+

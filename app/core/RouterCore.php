@@ -142,7 +142,7 @@ class RouterCore
         $ex = explode('@', $get);
         // SE A VÁRIAVEL $ex NA POSIÇÃO 0 NÃO FOR INICIADA OU VÁRIAVEL $ex NA POSIÇÃO 1 NÃO FOR INICIADA
         if (!isset($ex[0]) || !isset($ex[1])) {
-        // RETORNA UMA MENSAGEM DE ERRO CONCATENANDO COM A VÁRIAVEL GET
+            // RETORNA UMA MENSAGEM DE ERRO CONCATENANDO COM A VÁRIAVEL GET
             (new \Itworks\core\Controller)->showMessage('Dados inválidos', 'Controller ou método não encontrado: ' . $get, null, 404);
             return;
         }
@@ -151,15 +151,15 @@ class RouterCore
         $cont = 'Itworks\\src\\controller\\' . $ex[0];
         // SE A CLASSE NÃO FOR DEFINIDA PELA VÁRIAVEL $cont
         if (!class_exists($cont)) {
-        // RETORNA UMA MENSAGEM DE ERRO CONCATENANDO COM A VÁRIAVEL GET
-        (new \Itworks\core\Controller)->showMessage('Dados inválidos', 'Controller não encontrada: ' . $get, null, 404);
+            // RETORNA UMA MENSAGEM DE ERRO CONCATENANDO COM A VÁRIAVEL GET
+            (new \Itworks\core\Controller)->showMessage('Dados inválidos', 'Controller não encontrada: ' . $get, null, 404);
             return;
         }
 
         // SE O MÉTODO DA CLASSE NÃO EXITIR PARA $cont e $ex[1]
         if (!method_exists($cont, $ex[1])) {
-        // RETORNA UMA MENSAGEM DE ERRO CONCATENANDO COM A VÁRIAVEL GET
-        (new \Itworks\core\Controller)->showMessage('Dados inválidos', 'Método não encontrado: ' . $get, null, 404);
+            // RETORNA UMA MENSAGEM DE ERRO CONCATENANDO COM A VÁRIAVEL GET
+            (new \Itworks\core\Controller)->showMessage('Dados inválidos', 'Método não encontrado: ' . $get, null, 404);
             return;
         }
 

@@ -7,7 +7,7 @@
     <h1>
         {{titulo}}
     </h1>
-    <hr/>
+    <hr />
     <p>{{descricao}}</p>
 
     {% if link != null %}

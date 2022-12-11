@@ -4,7 +4,8 @@ namespace Itworks\src\controller;
 
 class HomeController
 {
-    public function home(){
+    public function home()
+    {
         echo "BEM-VINDO";
     }
 }

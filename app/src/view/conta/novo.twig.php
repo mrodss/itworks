@@ -7,7 +7,7 @@
 
     <div class="mt-3">
         <label for="txtValor" class="form-label">Valor</label>
-        <input type="text" id="txtValor" name="txtValor" class="form-control" placeholder="Valor" required/>
+        <input type="text" id="txtValor" name="txtValor" class="form-control" placeholder="Valor" required />
     </div>
 
     <div class="mt-3">

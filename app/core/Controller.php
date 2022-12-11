@@ -19,17 +19,16 @@ class Controller
         //IMPRIME A RENDERIZAÇÃO
         $twig->addGlobal('BASE', BASE);
         echo $twig->render($view . '.twig.php', $params);
-
     }
 
     public function showMessage(
         string $titulo,
         string $descricao,
         string $link = null,
-        int $httpCode = 200 
-    ){
+        int $httpCode = 200
+    ) {
         http_response_code($httpCode);
-        $this->load('partials/massage',[
+        $this->load('partials/massage', [
             'titulo' => $titulo,
             'descricao' => $descricao,
             'link' => $link,

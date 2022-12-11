@@ -18,9 +18,9 @@
         <td>{{item.valor }}</td>
         <td>{{item.movimentacao }}</td>
         <td>{{item.dataRegistro }}</td>
-    </tr> 
+    </tr>
     {% endfor %}
 
-  </table>
+</table>
 
 {% endblock %}

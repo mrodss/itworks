@@ -41,7 +41,8 @@ class ContaModel
         }
     }
 
-    public function getAll(){
+    public function getAll()
+    {
         //ESCREVEMOS A CONSULTA SQL E ATRIBUIMOS A VÁRIAVEL $SQL
         $sql = 'SELECT * FROM extrato ORDER BY dataRegistro ASC';
         //EXECUTAMOS A CONSULTA CHAMANDO O MÉTODO MODELO.
@@ -50,7 +51,7 @@ class ContaModel
         //DECLARA UMA LISTA INICIALMENTE NULA
         $listaExtrato = null;
         //PERCORREMOS TODAS AS LINHAS DO RESULTADO DA BUSCA
-        foreach($dt as $dr){
+        foreach ($dt as $dr) {
             //ATRIBUIMOS A ULTIMA POSIÇÃO DO ARRAY O PRODUTO DEVIDAMENTE TRATADO
             $listaExtrato[] = $this->collection($dr);
         }
@@ -59,14 +60,15 @@ class ContaModel
     }
 
     /**
-    *CONVERTE UMA ESTRUTURA DE ARRAY VINDA DA BASE DE DADOS EN UM OBJETO DEVDAMENTE TRATADO
-    *@param array|object $PARAM RECEBE O PARÂMETRO QUE É RETORNADO NA CONSULTA COM A BASE DE DADOS
-    *@return object RETORNA UM OBJETO DEVIDAMENTE TRATADO COM A ESTRUTURA DE CONTA 
-    */
+     *CONVERTE UMA ESTRUTURA DE ARRAY VINDA DA BASE DE DADOS EN UM OBJETO DEVDAMENTE TRATADO
+     *@param array|object $PARAM RECEBE O PARÂMETRO QUE É RETORNADO NA CONSULTA COM A BASE DE DADOS
+     *@return object RETORNA UM OBJETO DEVIDAMENTE TRATADO COM A ESTRUTURA DE CONTA 
+     */
 
     //OPERADOR NULL COALESCE
-    public function collection($param){
-        return(object)[
+    public function collection($param)
+    {
+        return (object)[
             'id'           => $param['id']             ?? null,
             'valor'        => $param['valor']          ?? null,
             'movimentacao' => $param['movimentacao']   ?? null,
@@ -79,11 +81,12 @@ class ContaModel
      * @param int $id ID do objeto a ser retornado
      * @return object Retorno de um objeto populado com os dados do registro ou se não encontrar com seus valores nulos
      */
-    public function getById( int $id){
+    public function getById(int $id)
+    {
         $sql = 'SELECT * FROM* extrato WHERE id = :id';
 
         $param = [
-            ':id' =>$id
+            ':id' => $id
         ];
 
         $dr = $this->pdo->ExecuteQueryOneRow($sql, $param);

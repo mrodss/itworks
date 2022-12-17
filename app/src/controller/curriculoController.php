@@ -51,17 +51,16 @@ class curriculoController extends Controller
 
             //ENVIAR AO BANCO DE DADOS
             $dados = (object)[
-                'filename'=> $arquivo,
-                'curriculo_id'=> $_POST['id']
+                'filename' => $arquivo,
+                'curriculo_id' => $_POST['id']
             ];
             $result = $this->curriculoModel->insertUpload($dados);
-            
+
             if ($result <= 0) {
                 $this->showMessage('Erro', 'Não é possivel salvar o arquivo', NULL, 404);
             } else {
                 redirect(BASE . 'cadastro-concluido?id');
             }
-
         }
     }
 

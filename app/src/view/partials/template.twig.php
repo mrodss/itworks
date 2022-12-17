@@ -12,7 +12,7 @@
 
 <body>
     {% include 'partials/header.twig.php '%}
-    <main>
+    <main class="container-fluid">
         {% block body %}{% endblock %}
     </main>
     {% include 'partials/footer.twig.php '%}

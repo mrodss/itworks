@@ -4,6 +4,6 @@
 
 {% block body %}
 
-<h1> CURRÍCULO RECEBIDO COM SUCESSO
+<h1> SOBRE A EMPRESA
 
 {% endblock %}

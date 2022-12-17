@@ -10,4 +10,14 @@ class SiteController extends Controller
     {
         $this->load('site/index');
     }
+
+    public function sobre()
+    {
+        $this->load('site/sobre');
+    }
+
+    public function saiba()
+    {
+        $this->load('site/saiba');
+    }
 }

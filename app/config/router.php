@@ -7,8 +7,11 @@
 // $this->get('/conta-editar', 'ContaController@editar');
 
 $this->post('/', 'SiteController@index');
-
 $this->get('/form', 'curriculoController@criarCurriculo');
+
+$this->get('/sobre', 'SiteController@sobre');
+$this->get('/saiba', 'SiteController@saiba');
+
 $this->post('/form-salvar', 'curriculoController@salvarCurriculo');
 $this->get('/envio-arquivo', 'curriculoController@upload');
 $this->post('/arquivo-salvar', 'curriculoController@salvarUpload');

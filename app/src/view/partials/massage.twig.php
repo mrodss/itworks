@@ -12,8 +12,8 @@
 
     {% if link != null %}
     <a herf="{{link}}" class="btn btn-info"> Voltar</a>
-    {%endif}
+    {%endif%}
 
 </div>
 
-{%endblock}
+{%endblock%}

@@ -13,7 +13,7 @@ class Input
 
     public static function post(
         string $param,
-        int $filter = FILTER_SANITIZE_STRING
+        int $filter = FILTER_UNSAFE_RAW
     ) {
         return filter_input(INPUT_POST, $param, $filter);
     }
@@ -30,8 +30,8 @@ class Get
 
     public static function get(
         string $param,
-        int $filter = FILTER_SANITIZE_STRING
+        int $filter = FILTER_UNSAFE_RAW
     ) {
-        return filter_input(INPUT_POST, $param, $filter);
+        return filter_input(INPUT_GET, $param, $filter);
     }
 }

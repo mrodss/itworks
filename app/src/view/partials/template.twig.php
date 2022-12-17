@@ -12,7 +12,9 @@
 
 <body>
     {% include 'partials/header.twig.php '%}
+    <main>
     {% block body %}{% endblock %}
+    </main>
     {% include 'partials/footer.twig.php '%}
 </body>
 

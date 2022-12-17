@@ -72,16 +72,16 @@ class ContaController extends Controller
         }
     }
 
-    public function editar()
-    {
-        $id = Input::get('id');
-        $conta = $this->contaModel->getById((int)$id);
+    // public function editar()
+    // {
+    //     $id = Input::get('id');
+    //     $conta = $this->contaModel->getById((int)$id);
 
-        $this->load(
-            'conta/editar',
-            [
-                'conta' => $conta
-            ]
-        );
-    }
+    //     $this->load(
+    //         'conta/editar',
+    //         [
+    //             'conta' => $conta
+    //         ]
+    //     );
+    // }
 }
